@@ -14,6 +14,6 @@ public class AccountData {
 
     public static AccountData validAccount() {
         //ПОМЕНЯЛА ПАРОЛЬ
-        return new AccountData("mayushka0105", "SLM-P6a-ie8-eZ5");
+        return new AccountData("mayushka0105", "PASSWORDPASSWORD");
     }
 }
