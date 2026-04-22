@@ -13,7 +13,7 @@ public class AccountData {
     public String getPassword() { return password; }
 
     public static AccountData validAccount() {
-        //ПАРОЛЬ ПОМЕНЯЛА
-        return new AccountData("mayushka0105", "PASSWORDPASSWORD");
+        //ПОМЕНЯЛА ПАРОЛЬ
+        return new AccountData("mayushka0105", "SLM-P6a-ie8-eZ5");
     }
 }

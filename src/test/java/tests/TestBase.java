@@ -1,21 +1,19 @@
 package tests;
 
+import helpers.ApplicationManager;
 import org.junit.After;
 import org.junit.Before;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestBase {
-    protected WebDriver driver;
+    protected final ApplicationManager app = new ApplicationManager();
 
     @Before
     public void setUp() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        app.init();
     }
 
     @After
     public void tearDown() {
-        driver.quit();
+        app.stop();
     }
 }

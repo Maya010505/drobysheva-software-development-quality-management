@@ -2,8 +2,6 @@ package tests;
 
 import data.AccountData;
 import org.junit.Test;
-import pages.LoginPage;
-
 import static org.junit.Assert.assertTrue;
 
 public class LoginTest extends TestBase {
@@ -11,12 +9,11 @@ public class LoginTest extends TestBase {
     @Test
     public void validUserCanLogin() {
         AccountData acc = AccountData.validAccount();
-        LoginPage login = new LoginPage(driver);
 
-        login.open();
-        login.login(acc);
+        app.getNavigation().openLoginPage();
+        app.getAuth().login(acc);
 
-        try {Thread.sleep(2000);} catch (InterruptedException e) {}
-        assertTrue("Авторизация не удалась", driver.getCurrentUrl().contains("livejournal.com"));
+        try { Thread.sleep(2000); } catch (InterruptedException e) {}
+        assertTrue(app.getDriver().getCurrentUrl().contains("livejournal.com"));
     }
 }

@@ -3,9 +3,6 @@ package tests;
 import data.AccountData;
 import data.PostData;
 import org.junit.Test;
-import pages.LoginPage;
-import pages.PostPage;
-
 import static org.junit.Assert.assertTrue;
 
 public class PostTest extends TestBase {
@@ -15,15 +12,12 @@ public class PostTest extends TestBase {
         AccountData acc = AccountData.validAccount();
         PostData post = PostData.randomPost();
 
-        LoginPage login = new LoginPage(driver);
-        PostPage postPage = new PostPage(driver);
+        app.getNavigation().openLoginPage();
+        app.getAuth().login(acc);
 
-        login.open();
-        login.login(acc);
+        app.getPost().create(post);
 
-        postPage.createPost(post);
-
-        try {Thread.sleep(2000);} catch (InterruptedException e) {}
-        assertTrue("Авторизация не удалась", driver.getCurrentUrl().contains("livejournal.com"));
+        try { Thread.sleep(2000); } catch (InterruptedException e) {}
+        assertTrue(app.getDriver().getCurrentUrl().contains("livejournal.com"));
     }
 }
