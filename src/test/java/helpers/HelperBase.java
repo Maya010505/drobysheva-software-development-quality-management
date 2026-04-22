@@ -15,11 +15,9 @@ public class HelperBase {
     public HelperBase(ApplicationManager manager) {
         this.manager = manager;
         this.driver = manager.getDriver();
-        // Ожидание до 10 секунд
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    // Вспомогательный метод для ожидания и поиска
     protected WebElement find(By locator) {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
