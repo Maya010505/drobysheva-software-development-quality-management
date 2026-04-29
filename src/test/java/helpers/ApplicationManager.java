@@ -5,22 +5,31 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ApplicationManager {
     private WebDriver driver;
-    
+
     private NavigationHelper navigationHelper;
     private LoginHelper loginHelper;
     private PostHelper postHelper;
 
-    public void init() {
+    private static ThreadLocal<ApplicationManager> app = new ThreadLocal<>();
+
+    private ApplicationManager() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
         navigationHelper = new NavigationHelper(this);
         loginHelper = new LoginHelper(this);
         postHelper = new PostHelper(this);
+
+        Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
     }
 
-    public void stop() {
-        driver.quit();
+    public static ApplicationManager getInstance() {
+        if (app.get() == null) {
+            ApplicationManager newInstance = new ApplicationManager();
+            newInstance.getNavigation().openLoginPage();
+            app.set(newInstance);
+        }
+        return app.get();
     }
 
     public WebDriver getDriver() { return driver; }

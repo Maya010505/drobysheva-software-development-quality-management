@@ -16,4 +16,11 @@ public class PostHelper extends HelperBase {
         click(By.cssSelector(".js--toggle-submission-popup"));
         click(By.cssSelector(".js--submit-post"));
     }
+
+    public void delete() {
+        click(By.cssSelector(".svgicon--more"));
+        click(By.linkText("Редактировать запись"));
+        click(By.linkText("Удалить пост"));
+        click(By.cssSelector(".reset-0-2-234:nth-child(2) > .rootIn-0-2-243"));
+    }
 }

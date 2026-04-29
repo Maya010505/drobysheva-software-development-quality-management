@@ -5,7 +5,7 @@ import data.PostData;
 import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
-public class PostTest extends TestBase {
+public class CreatePostTest extends TestBase {
 
     @Test
     public void userCanCreatePost() {
@@ -17,7 +17,9 @@ public class PostTest extends TestBase {
 
         app.getPost().create(post);
 
-        try { Thread.sleep(2000); } catch (InterruptedException e) {}
-        assertTrue(app.getDriver().getCurrentUrl().contains("livejournal.com"));
+        try { Thread.sleep(3000); } catch (InterruptedException e) {}
+
+        boolean isPostVisible = app.getDriver().getPageSource().contains(post.getSubject());
+        assertTrue("Ошибка: Созданный пост не найден на странице!", isPostVisible);
     }
 }

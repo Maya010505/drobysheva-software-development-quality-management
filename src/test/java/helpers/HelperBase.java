@@ -23,7 +23,6 @@ public class HelperBase {
     }
 
     protected void click(By locator) {
-        // Сначала ждем, потом кликаем
         find(locator).click();
     }
 

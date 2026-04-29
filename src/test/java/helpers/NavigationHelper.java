@@ -7,6 +7,12 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void openLoginPage() {
-        driver.get("https://www.livejournal.com/login.bml");
+        if (manager.getAuth().isLoggedIn()) {
+            return;
+        }
+
+        if (!driver.getCurrentUrl().contains("livejournal.com/login.bml")) {
+            driver.get("https://www.livejournal.com/login.bml");
+        }
     }
 }
