@@ -1,5 +1,7 @@
 package data;
 
+import helpers.Settings;
+
 public class AccountData {
     private final String username;
     private final String password;
@@ -9,11 +11,15 @@ public class AccountData {
         this.password = password;
     }
 
-    public String getUsername() { return username; }
-    public String getPassword() { return password; }
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 
     public static AccountData validAccount() {
-        //ПОМЕНЯЛА ПАРОЛЬ
-        return new AccountData("mayushka0105", "PASSWORDPASSWORD");
+        return new AccountData(Settings.getLogin(), Settings.getPassword());
     }
 }

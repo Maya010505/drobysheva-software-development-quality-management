@@ -10,9 +10,6 @@ public class NavigationHelper extends HelperBase {
         if (manager.getAuth().isLoggedIn()) {
             return;
         }
-
-        if (!driver.getCurrentUrl().contains("livejournal.com/login.bml")) {
-            driver.get("https://www.livejournal.com/login.bml");
-        }
+        driver.get(Settings.getBaseUrl());
     }
 }

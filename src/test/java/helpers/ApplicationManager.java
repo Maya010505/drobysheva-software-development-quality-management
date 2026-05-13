@@ -5,7 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class ApplicationManager {
     private WebDriver driver;
-
     private NavigationHelper navigationHelper;
     private LoginHelper loginHelper;
     private PostHelper postHelper;
@@ -26,14 +25,24 @@ public class ApplicationManager {
     public static ApplicationManager getInstance() {
         if (app.get() == null) {
             ApplicationManager newInstance = new ApplicationManager();
-            newInstance.getNavigation().openLoginPage();
             app.set(newInstance);
         }
         return app.get();
     }
 
-    public WebDriver getDriver() { return driver; }
-    public NavigationHelper getNavigation() { return navigationHelper; }
-    public LoginHelper getAuth() { return loginHelper; }
-    public PostHelper getPost() { return postHelper; }
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    public NavigationHelper getNavigation() {
+        return navigationHelper;
+    }
+
+    public LoginHelper getAuth() {
+        return loginHelper;
+    }
+
+    public PostHelper getPost() {
+        return postHelper;
+    }
 }
